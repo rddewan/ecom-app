@@ -114,7 +114,7 @@ flavorizr:
           signingConfig: signingConfigs.debug
          
       ios:
-        bundleId: "dev.rdewan.ecomApp"
+        bundleId: "dev.rdewan.ecomApp.development"
         generateDummyAssets: true
         #icon: ""
         buildSettings: 
@@ -132,7 +132,7 @@ flavorizr:
           versionNameSuffix: "\"QA\"" # Don't forget to escape strings with \"
           signingConfig: signingConfigs.qa
       ios:
-        bundleId: "dev.rdewan.ecomApp"
+        bundleId: "dev.rdewan.ecomApp.qa"
         generateDummyAssets: true
         #icon: ""
     
@@ -149,7 +149,7 @@ flavorizr:
           versionNameSuffix: "\"UAT\"" # Don't forget to escape strings with \"
           signingConfig: signingConfigs.uat
       ios:
-        bundleId: "dev.rdewan.ecomApp"
+        bundleId: "dev.rdewan.ecomApp.uat"
         generateDummyAssets: true
         #icon: ""
 
