@@ -107,7 +107,7 @@ flavorizr:
       android:
         applicationId: "dev.rdewan.ecomApp"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping_dev.png"
         customConfig:
           applicationIdSuffix: "\".development\""
           versionNameSuffix: "\"Dev\"" # Don't forget to escape strings with \"
@@ -116,7 +116,7 @@ flavorizr:
       ios:
         bundleId: "dev.rdewan.ecomApp.development"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping_dev.png"
         buildSettings: 
 
     qa:
@@ -126,7 +126,7 @@ flavorizr:
       android:
         applicationId: "dev.rdewan.ecom_app"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
         customConfig:
           applicationIdSuffix: "\".qa\""
           versionNameSuffix: "\"QA\"" # Don't forget to escape strings with \"
@@ -134,7 +134,7 @@ flavorizr:
       ios:
         bundleId: "dev.rdewan.ecomApp.qa"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
     
     uat:
       app:
@@ -143,7 +143,7 @@ flavorizr:
       android:
         applicationId: "dev.rdewan.ecom_app"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
         customConfig:
           applicationIdSuffix: "\".uat\""
           versionNameSuffix: "\"UAT\"" # Don't forget to escape strings with \"
@@ -151,7 +151,7 @@ flavorizr:
       ios:
         bundleId: "dev.rdewan.ecomApp.uat"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
 
     prod:
       app:
@@ -160,10 +160,10 @@ flavorizr:
       android:
         applicationId: "dev.rdewan.ecom_app"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
         customConfig:         
           signingConfig: signingConfigs.release
       ios:
         bundleId: "dev.rdewan.ecomApp"
         generateDummyAssets: true
-        #icon: ""
+        icon: "assets/images/icons/shopping.png"
