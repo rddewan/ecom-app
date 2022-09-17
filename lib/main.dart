@@ -1,3 +1,4 @@
+import 'package:ecom_app/common/logging/logging_provider.dart';
 import 'package:ecom_app/core/env/env_reader.dart';
 import 'package:ecom_app/core/flavor/flavor.dart';
 import 'package:ecom_app/main_widget.dart';
@@ -14,6 +15,9 @@ void mainApp(Flavor flavor) async {
   final envReader = container.read(envReaderProvider);
   final envFile = envReader.getEnvFileName(flavor);
   await dotenv.load(fileName: envFile);
+
+  // Setup Logger
+  container.read(setupLoggingProvider);
 
   
   runApp(
