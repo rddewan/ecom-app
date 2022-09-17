@@ -20,7 +20,7 @@ void mainApp(Flavor flavor) async {
     // Expose a [ProviderContainer] to the widget tree.
     UncontrolledProviderScope(
       container: container, 
-      child:  const MainWidget()
+      child:  const MainWidget(),
     ),
   );
     
