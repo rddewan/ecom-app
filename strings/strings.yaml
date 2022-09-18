@@ -1,0 +1,4 @@
+homeTitle: Flutter Demo Home Page
+buttonPushMsg: "You have pushed the button {{counter}} times:"
+increment: Increment
+home: Home

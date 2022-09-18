@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-09-18T12:43:35.830776",
+    "@@locale": "hi",
+    "homeTitle": "स्पंदन डेमो होम पेज",
+    "buttonPushMsg": "आपने बटन को धक्का दिया है {counter} बार:",
+    "@buttonPushMsg": {
+        "description": "Auto-generated for buttonPushMsg",
+        "placeholders": {
+            "counter": {}
+        }
+    },
+    "increment": "वेतन वृद्धि",
+    "home": "घर"
+}

@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-09-18T12:43:35.831249",
+    "@@locale": "en",
+    "homeTitle": "Flutter Demo Home Page",
+    "buttonPushMsg": "You have pushed the button {counter} times:",
+    "@buttonPushMsg": {
+        "description": "Auto-generated for buttonPushMsg",
+        "placeholders": {
+            "counter": {}
+        }
+    },
+    "increment": "Increment",
+    "home": "Home"
+}
