@@ -1,6 +1,7 @@
 import 'package:ecom_app/common/logging/logging_provider.dart';
 import 'package:ecom_app/core/env/env_reader.dart';
 import 'package:ecom_app/core/flavor/flavor.dart';
+import 'package:ecom_app/core/providers/internet_connection_observer.dart';
 import 'package:ecom_app/main_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -18,6 +19,9 @@ void mainApp(Flavor flavor) async {
 
   // Setup Logger
   container.read(setupLoggingProvider);
+
+  // Observer internet connection
+  container.read(internetConnectionObserverProvider);
 
   
   runApp(

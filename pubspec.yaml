@@ -51,6 +51,10 @@ dependencies:
   flutter_translation_sheet: ^1.0.20
   # https://pub.dev/packages/intl
   intl: ^0.17.0
+  # https://pub.dev/packages/connectivity_plus
+  connectivity_plus: ^2.3.7
+  # https://pub.dev/packages/internet_connection_checker
+  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
