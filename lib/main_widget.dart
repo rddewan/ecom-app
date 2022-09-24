@@ -1,4 +1,6 @@
 
+import 'dart:io';
+
 import 'package:ecom_app/base/base_state.dart';
 import 'package:ecom_app/common/error/no_internet_connection_screen.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:upgrader/upgrader.dart';
 
 class MainWidget extends ConsumerStatefulWidget {
   const MainWidget({super.key});
@@ -107,20 +110,28 @@ class _MyHomePageState extends BaseState<HomePage> {
         
         title: Text(widget.title),
       ),
-      body: Center(
-        
-        child: Column(
-        
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              translation.buttonPushMsg(_counter),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: UpgradeAlert(
+        upgrader: Upgrader(
+          shouldPopScope: () => true,
+          canDismissDialog: true,
+          durationUntilAlertAgain: const Duration(days: 1),
+          dialogStyle: Platform.isIOS ? UpgradeDialogStyle.cupertino : UpgradeDialogStyle.material,
+        ),
+        child: Center(
+          
+          child: Column(
+          
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                translation.buttonPushMsg(_counter),
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
