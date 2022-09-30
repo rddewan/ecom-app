@@ -57,6 +57,10 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   # https://pub.dev/packages/upgrader
   upgrader: ^4.6.1
+  # https://pub.dev/packages/dio
+  dio: ^4.0.6
+  # https://pub.dev/packages/dio_http_formatter
+  dio_http_formatter: ^2.1.0
 
 dev_dependencies:
   flutter_test:
