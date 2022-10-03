@@ -1,4 +1,7 @@
 
+import 'dart:io';
+
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_formatter/dio_http_formatter.dart';
 import 'package:ecom_app/core/env/env_reader.dart';
@@ -20,6 +23,17 @@ final networkServiceProvider = Provider<Dio>((ref) {
       HttpFormatter(),
       NetworkServiceInterceptor(),
     ]);
+
+   (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = ((client) {
+
+      final certBytes = envReader.getCertificate();
+      final SecurityContext context = SecurityContext();
+      client.badCertificateCallback = (X509Certificate cert, String host, int port) => false;
+      context.setTrustedCertificatesBytes(certBytes);
+      
+      return HttpClient(context: context);
+     
+   });
 
   return _dio;
 });
