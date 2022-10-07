@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/common/error/no_internet_connection_screen.dart';
+import 'package:ecom_app/core/auth/local_auth.dart';
 import 'package:ecom_app/core/providers/app_background_state_provider.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
 import 'package:ecom_app/core/remote/network_service.dart';
@@ -167,6 +168,17 @@ class _MyHomePageState extends BaseConsumerState<HomePage> {
                 '$_counter',
                 style: Theme.of(context).textTheme.headline4,
               ),
+
+              ElevatedButton(
+                onPressed: () async {
+                  final didAuthenticate = await ref.read(localAuthProvider).authenticate();
+                  if (didAuthenticate) {
+                    debugPrint('successful auth');
+                  }
+
+                }, 
+                child: const Text('Authenticate To Unlock'),
+              )
             ],
           ),
         ),

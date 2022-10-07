@@ -67,6 +67,8 @@ dependencies:
   hive_flutter: ^1.1.0
   # https://pub.dev/packages/envied
   envied: ^0.2.3
+  # https://pub.dev/packages/local_auth
+  local_auth: ^2.1.2
   
 
 dev_dependencies:
