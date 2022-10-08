@@ -69,6 +69,8 @@ dependencies:
   envied: ^0.2.3
   # https://pub.dev/packages/local_auth
   local_auth: ^2.1.2
+  # https://pub.dev/packages/freerasp
+  freerasp: ^3.0.2
   
 
 dev_dependencies:

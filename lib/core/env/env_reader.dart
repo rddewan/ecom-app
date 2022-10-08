@@ -63,5 +63,50 @@ class EnvReader {
         throw Exception(".env file not found");
     }
   }
+
+  String getAndroidBuildId() {
+    switch (_flavor) {
+      case Flavor.dev:
+        return EnvDev.androidBuildId;
+      case Flavor.qa:
+        return EnvQA.androidBuildId;
+      case Flavor.uat:
+        return EnvUAT.androidBuildId;
+      case Flavor.prod:
+        return EnvProd.androidBuildId;        
+      default:
+        throw Exception(".env file not found");
+    }
+  }
+
+  String getIosBuildId() {
+    switch (_flavor) {
+      case Flavor.dev:
+        return EnvDev.iosBuildId;
+      case Flavor.qa:
+        return EnvQA.iosBuildId;
+      case Flavor.uat:
+        return EnvUAT.iosBuildId;
+      case Flavor.prod:
+        return EnvProd.iosBuildId;        
+      default:
+        throw Exception(".env file not found");
+    }
+  }
+
+  String egtHash256() {
+    switch (_flavor) {
+      case Flavor.dev:
+        return utf8.decode(base64Decode(EnvDev.hash256));
+      case Flavor.qa:
+        return utf8.decode(base64Decode(EnvQA.hash256));
+      case Flavor.uat:
+        return utf8.decode(base64Decode(EnvUAT.hash256));
+      case Flavor.prod:
+        return utf8.decode(base64Decode(EnvProd.hash256));        
+      default:
+        throw Exception(".env file not found");
+    }
+  }
   
 }

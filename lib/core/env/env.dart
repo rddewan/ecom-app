@@ -11,6 +11,12 @@ abstract class EnvDev {
   static final apiKey = _EnvDev.apiKey;
   @EnviedField(varName: 'CERTIFICATE', obfuscate: true)
   static final certificate = _EnvDev.certificate;
+  @EnviedField(varName: 'ANDROID_BUILD_ID')
+  static const androidBuildId = _EnvDev.androidBuildId;
+  @EnviedField(varName: 'IOS_BUILD_ID')
+  static const iosBuildId = _EnvDev.iosBuildId;
+  @EnviedField(varName: 'HASH256', obfuscate: true)
+  static final hash256 = _EnvDev.hash256;
 
 }
 
@@ -21,7 +27,13 @@ abstract class EnvQA {
   @EnviedField(varName: 'API_KEY', obfuscate: true)
   static final apiKey = _EnvQA.apiKey;
   @EnviedField(varName: 'CERTIFICATE', obfuscate: true)
-  static final certificate = _EnvDev.certificate;
+  static final certificate = _EnvQA.certificate;
+  @EnviedField(varName: 'ANDROID_BUILD_ID')
+  static const androidBuildId = _EnvQA.androidBuildId;
+  @EnviedField(varName: 'IOS_BUILD_ID')
+  static const iosBuildId = _EnvQA.iosBuildId;
+  @EnviedField(varName: 'HASH256', obfuscate: true)
+  static final hash256 = _EnvQA.hash256;
 }
 
 @Envied(path: '.uat.env')
@@ -31,7 +43,13 @@ abstract class EnvUAT {
   @EnviedField(varName: 'API_KEY', obfuscate: true)
   static final apiKey = _EnvUAT.apiKey;
   @EnviedField(varName: 'CERTIFICATE', obfuscate: true)
-  static final certificate = _EnvDev.certificate;
+  static final certificate = _EnvUAT.certificate;
+  @EnviedField(varName: 'ANDROID_BUILD_ID')
+  static const androidBuildId = _EnvUAT.androidBuildId;
+  @EnviedField(varName: 'IOS_BUILD_ID')
+  static const iosBuildId = _EnvUAT.iosBuildId;
+  @EnviedField(varName: 'HASH256', obfuscate: true)
+  static final hash256 = _EnvUAT.hash256;
 
 }
 
@@ -42,6 +60,12 @@ abstract class EnvProd {
   @EnviedField(varName: 'API_KEY', obfuscate: true)
   static final apiKey = _EnvProd.apiKey;
   @EnviedField(varName: 'CERTIFICATE', obfuscate: true)
-  static final certificate = _EnvDev.certificate;
+  static final certificate = _EnvProd.certificate;
+  @EnviedField(varName: 'ANDROID_BUILD_ID')
+  static const androidBuildId = _EnvProd.androidBuildId;
+  @EnviedField(varName: 'IOS_BUILD_ID')
+  static const iosBuildId = _EnvProd.iosBuildId;
+  @EnviedField(varName: 'HASH256', obfuscate: true)
+  static final hash256 = _EnvProd.hash256;
 
 }
