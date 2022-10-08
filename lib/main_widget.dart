@@ -8,6 +8,7 @@ import 'package:ecom_app/core/auth/local_auth.dart';
 import 'package:ecom_app/core/providers/app_background_state_provider.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
 import 'package:ecom_app/core/remote/network_service.dart';
+import 'package:ecom_app/features/setting/presentation/ui/setting_screen.dart';
 import 'package:ecom_app/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -84,7 +85,7 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
       theme: ThemeData(      
         primarySwatch: Colors.blue,
       ),
-      home: isAppInBackground ? const ColoredBox(color: Colors.black) : const HomePage(title: 'Flutter Demo Home Page'),
+      home: isAppInBackground ? const ColoredBox(color: Colors.black) : const SettingScreen(),
     );
   }
 

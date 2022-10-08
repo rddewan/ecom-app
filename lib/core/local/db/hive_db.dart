@@ -2,8 +2,8 @@
 
 import 'dart:convert';
 
-import 'package:ecom_app/core/db/hive_box_key.dart';
-import 'package:ecom_app/core/db/hive_const.dart';
+import 'package:ecom_app/core/local/db/hive_box_key.dart';
+import 'package:ecom_app/core/local/db/hive_const.dart';
 import 'package:ecom_app/core/local/secure_storage/secure_storage.dart';
 import 'package:ecom_app/core/local/secure_storage/secure_storage_impl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,11 +20,9 @@ class HiveDb {
 
   final SecureStorage _secureStorage;
 
-  HiveDb(this._secureStorage){
-    _init();
-  }
+  HiveDb(this._secureStorage);
 
-  void _init() async {
+  Future<void> init() async {
     //You can provide a [subDir] where the boxes should be stored.
     await Hive.initFlutter(hiveDbPath);
 

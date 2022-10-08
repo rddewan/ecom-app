@@ -1,5 +1,5 @@
 import 'package:ecom_app/common/logging/logging_provider.dart';
-import 'package:ecom_app/core/db/hive_db.dart';
+import 'package:ecom_app/core/local/db/hive_db.dart';
 import 'package:ecom_app/core/flavor/flavor.dart';
 import 'package:ecom_app/core/providers/flavor_provider.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
@@ -20,7 +20,8 @@ void mainApp(Flavor flavor) async {
   container.read(setupLoggingProvider);
 
   // setup the hive database
-  container.read(hiveDbProvider);
+  final db = container.read(hiveDbProvider);
+  await db.init();
 
   // Observer internet connection
   container.read(internetConnectionObserverProvider);
