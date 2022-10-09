@@ -8,6 +8,7 @@ import 'package:ecom_app/features/auth/presentation/ui/signup_screen.dart';
 import 'package:ecom_app/features/cart/presentation/ui/cart_screen.dart';
 import 'package:ecom_app/features/dashboard/presentation/ui/dashboard_screen.dart';
 import 'package:ecom_app/features/home/presentation/ui/home_screen.dart';
+import 'package:ecom_app/features/product/presentation/ui/product_detail_screen.dart';
 import 'package:ecom_app/features/setting/presentation/ui/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -95,6 +96,21 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 ),
               );
             },
+
+            routes: [
+              GoRoute(
+                path: 'detail',
+                name: productDetailRoute,
+                pageBuilder: (context, state) {
+                  return NoTransitionPage(
+                    key: state.pageKey,
+                    child: ProductDetailScreen(
+                      key: state.pageKey,
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
 
           GoRoute(
