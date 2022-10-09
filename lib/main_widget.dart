@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:ecom_app/base/base_consumer_state.dart';
-import 'package:ecom_app/common/error/no_internet_connection_screen.dart';
 import 'package:ecom_app/core/auth/local_auth.dart';
 import 'package:ecom_app/core/providers/app_background_state_provider.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
@@ -39,7 +38,7 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
     final isConnected = await ref.read(internetConnectionObserverProvider).isNetworkConnected();
     if (!isConnected) {
       if (!mounted) return;
-      navigatorKey.currentState?.push(MaterialPageRoute(builder: (_) => const NoInternetConnectionScreen()));
+      ref.read(goRouterProvider).push('/noInternet');      
     }
   }
 
@@ -47,7 +46,7 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
     final connectionStream = ref.read(internetConnectionObserverProvider).hasConnectionStream.stream;
     connectionStream.listen((isConnected) {
       if (!isConnected) {
-        _showSnackBar();        
+        ref.read(goRouterProvider).push('/noInternet');      
       }
     });
   }
