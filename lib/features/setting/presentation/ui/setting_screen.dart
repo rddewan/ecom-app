@@ -3,6 +3,7 @@ import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/common/class/set_pass_code_screen.dart';
 import 'package:ecom_app/common/class/show_pass_code_screen.dart';
 import 'package:ecom_app/core/local/db/hive_box_key.dart';
+import 'package:ecom_app/core/route/notifier/go_router_notifier.dart';
 import 'package:ecom_app/features/setting/presentation/controller/setting_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -51,6 +52,15 @@ class _SettingScreenState extends BaseConsumerState<SettingScreen> with SetPassC
 
               },
             ),
+          ),
+          const SizedBox(height: 8,),
+
+          ElevatedButton.icon(
+            onPressed: () {
+              ref.read(goRouterNotifierProvider).isLoggedIn = false;
+            }, 
+            icon: const Icon(Icons.logout), 
+            label: const Text('LogOut'),
           )
 
         ],

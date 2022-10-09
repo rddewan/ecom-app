@@ -19,19 +19,21 @@ class _SignUpScreenState extends BaseConsumerState<SignUpScreen> {
         title: const Text('SignUp'),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children:  [
-          const Text('SignUp Screen'),
-          ElevatedButton.icon(
-            onPressed: () {
-
-            }, 
-            icon: const Icon(Icons.login), 
-            label: const Text('SignUp'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children:  [
+            const Text('SignUp Screen'),
+            ElevatedButton.icon(
+              onPressed: () {
+                
+              }, 
+              icon: const Icon(Icons.login), 
+              label: const Text('SignUp'),
+            ),
+          ],
+        ),
       ),
     );
   }
