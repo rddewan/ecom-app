@@ -25,7 +25,7 @@ class MainWidget extends ConsumerStatefulWidget {
 
 class _MainWidgetState extends BaseConsumerState<MainWidget> {
   final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey();
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  
 
   @override
   void initState() {   

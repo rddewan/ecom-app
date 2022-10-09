@@ -20,7 +20,7 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
     final index = ref.watch(dashboardControllerProvider.select((value) => value.pageIndex));
 
     return BottomNavigationBar(
-      currentIndex: _calculateSelectedIndex(context),
+      currentIndex: index,
       onTap: (value) => _onItemTapped(value),
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,
@@ -37,7 +37,7 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
       ),
       items: const [
         BottomNavigationBarItem(
-          activeIcon: Icon(Icons.home_filled),
+          activeIcon: Icon(Icons.home),
           icon: Icon(Icons.home),
           label: 'Home',
         ),
@@ -49,7 +49,7 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
         BottomNavigationBarItem(
           activeIcon: Icon(Icons.settings),
           icon: Icon(Icons.settings_applications),
-          label: 'Home',
+          label: 'Setting',
         ),
 
       ],
@@ -75,7 +75,7 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
   }
 
   void _onItemTapped(int index) {
-    //ref.read(dashboardControllerProvider.notifier).setPageIndex(index);
+    ref.read(dashboardControllerProvider.notifier).setPageIndex(index);
 
     switch (index) {
       case 0:
