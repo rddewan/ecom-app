@@ -78,6 +78,8 @@ dependencies:
   freezed_annotation: ^2.1.0
   # https://pub.dev/packages/go_router
   go_router: ^5.0.5
+  # https://pub.dev/packages/firebase_core
+  firebase_core: ^1.24.0
 
   
 

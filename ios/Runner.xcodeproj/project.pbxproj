@@ -56,6 +56,14 @@
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7893D47FFAD0FFF24BD6753B /* Pods-Runner.profile-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dev.xcconfig"; sourceTree = "<group>"; };
+		79E6620C28FBD2320067FAF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79E6620D28FBD2320067FAF0 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
+		79E6620E28FBD39D0067FAF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79E6620F28FBD39D0067FAF0 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
+		79E6621028FBD5010067FAF0 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
+		79E6621128FBD5010067FAF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79E6621228FBD5D30067FAF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79E6621328FBD5D30067FAF0 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
 		7A4F4DB3C9D31EF79256B014 /* prodLaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = prodLaunchScreen.storyboard; path = Runner/prodLaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		81D39F9E9C617EF76842CC73 /* Pods-Runner.release-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dev.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +117,53 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		79E6620728FBD1AC0067FAF0 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				79E6620B28FBD1DC0067FAF0 /* Prod */,
+				79E6620A28FBD1D40067FAF0 /* UAT */,
+				79E6620928FBD1C80067FAF0 /* QA */,
+				79E6620828FBD1B70067FAF0 /* Dev */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		79E6620828FBD1B70067FAF0 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				79E6620D28FBD2320067FAF0 /* firebase_app_id_file.json */,
+				79E6620C28FBD2320067FAF0 /* GoogleService-Info.plist */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
+		79E6620928FBD1C80067FAF0 /* QA */ = {
+			isa = PBXGroup;
+			children = (
+				79E6620F28FBD39D0067FAF0 /* firebase_app_id_file.json */,
+				79E6620E28FBD39D0067FAF0 /* GoogleService-Info.plist */,
+			);
+			path = QA;
+			sourceTree = "<group>";
+		};
+		79E6620A28FBD1D40067FAF0 /* UAT */ = {
+			isa = PBXGroup;
+			children = (
+				79E6621028FBD5010067FAF0 /* firebase_app_id_file.json */,
+				79E6621128FBD5010067FAF0 /* GoogleService-Info.plist */,
+			);
+			path = UAT;
+			sourceTree = "<group>";
+		};
+		79E6620B28FBD1DC0067FAF0 /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				79E6621328FBD5D30067FAF0 /* firebase_app_id_file.json */,
+				79E6621228FBD5D30067FAF0 /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +213,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				79E6620728FBD1AC0067FAF0 /* Firebase */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,

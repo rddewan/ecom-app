@@ -29,3 +29,11 @@ flutter pub run flutter_flavorizr
 ## Build Runner
 * fvm flutter  pub run build_runner build --delete-conflicting-outputs
 * fvm flutter  pub run build_runner clean
+
+
+### Flutter Fire
+```flutterfire config \
+  --project=flutter-ecomapp-dev-c7f8b \
+  --out=lib/core/firebase/firebase_options_dev.dart \
+  --ios-bundle-id=dev.rdewan.ecomApp.development \     
+  --android-app-id=dev.rdewan.ecomApp.development  ```
