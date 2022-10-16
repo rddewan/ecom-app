@@ -1,5 +1,7 @@
 
 
+import 'dart:io';
+
 import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,7 @@ class ProductDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _ProductDetailScreenState extends BaseConsumerState<ProductDetailScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -32,8 +35,14 @@ class _ProductDetailScreenState extends BaseConsumerState<ProductDetailScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              
               const Text('Product Screen'),
               const SizedBox(height: 8,),
+              ElevatedButton.icon(
+                onPressed: () => throw Exception('Crash Testing from Flutter App: ${Platform.isAndroid ? 'Android' : 'iOS'}'), 
+                icon: const Icon(Icons.error_rounded), 
+                label: const Text('Record Exception'),
+              ),
               ElevatedButton.icon(
                 onPressed: () {
     

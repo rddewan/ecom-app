@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/core/auth/local_auth.dart';
+import 'package:ecom_app/core/firebase/crashlytics/crashlytics.dart';
 import 'package:ecom_app/core/providers/app_background_state_provider.dart';
 import 'package:ecom_app/core/providers/internet_connection_observer.dart';
 import 'package:ecom_app/core/remote/network_service.dart';
@@ -29,8 +30,14 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
   @override
   void initState() {   
     super.initState();
+    _setCrashlyticsUser();
     _isNetworkConnected();
     _networkConnectionObserver();
+  }
+
+  void _setCrashlyticsUser() async  {
+    final crashlytics = ref.read(crashlyticsProvider);
+     await  crashlytics.setUser('Richard');
   }
 
 
