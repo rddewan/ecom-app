@@ -22,3 +22,10 @@ flutter pub run flutter_flavorizr
 
 ## KeyTool 
 * Keytool -list -v -keystore dewan.jks -alias dewan
+
+### The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using 
+* "keytool -importkeystore -srckeystore android/keystores/dewan.jks -destkeystore android/keystores/dewan.jks -deststoretype pkcs12"
+
+## Build Runner
+* fvm flutter  pub run build_runner build --delete-conflicting-outputs
+* fvm flutter  pub run build_runner clean
