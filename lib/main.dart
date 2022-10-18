@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ecom_app/common/logging/logging_provider.dart';
+import 'package:ecom_app/core/firebase/analytics/analytics.dart';
 import 'package:ecom_app/core/firebase/crashlytics/crashlytics.dart';
 import 'package:ecom_app/core/firebase/firebase_options_provider.dart';
 import 'package:ecom_app/core/local/db/hive_db.dart';
@@ -37,6 +38,10 @@ void mainApp(Flavor flavor) async {
 
     // Enables/disables automatic data collection by Crashlytics.
     container.read(crashlyticsProvider);
+
+    // Initialize firebase analytics 
+    final analytics  = container.read(analyticsProvider);
+    await analytics.logAppOpen();
 
     // Setup Logger
     container.read(setupLoggingProvider);

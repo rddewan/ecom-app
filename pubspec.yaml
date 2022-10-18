@@ -82,6 +82,8 @@ dependencies:
   firebase_core: ^1.24.0
   # https://pub.dev/packages/firebase_crashlytics
   firebase_crashlytics: ^2.9.0
+  # https://pub.dev/packages/firebase_analytics
+  firebase_analytics: ^9.3.8
 
   
 

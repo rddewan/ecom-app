@@ -1,6 +1,7 @@
 
 
 
+import 'package:ecom_app/core/firebase/analytics/analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
@@ -15,6 +16,7 @@ abstract class BaseConsumerState<T extends ConsumerStatefulWidget> extends Consu
     log.info("$T initState");
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    ref.read(analyticsProvider).setCurrentScreen(screenName: T.toString());
   }
 
   @override
