@@ -1,19 +1,24 @@
 
 
-import 'package:ecom_app/flavors.dart';
+import 'package:ecom_app/core/flavor/flavor.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final envReaderProvider = Provider<EnvReader>((ref) {
+  return EnvReader();
+});
 
 class EnvReader {
 
   String getEnvFileName(Flavor flavor) {
     switch (flavor) {
-      case Flavor.DEV:
+      case Flavor.dev:
         return ".dev.env";
-      case Flavor.QA:
+      case Flavor.qa:
         return ".qa.env";
-      case Flavor.UAT:
+      case Flavor.uat:
         return ".uat.env";
-      case Flavor.PROD:
+      case Flavor.prod:
         return ".prod.env";
         
       default:

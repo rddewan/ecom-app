@@ -40,6 +40,8 @@ dependencies:
   flutter_flavorizr: ^2.1.4
   # https://pub.dev/packages/flutter_dotenv
   flutter_dotenv: ^5.0.2
+  # https://pub.dev/packages/flutter_riverpod
+  flutter_riverpod: ^2.0.0-dev.9
 
 dev_dependencies:
   flutter_test:
