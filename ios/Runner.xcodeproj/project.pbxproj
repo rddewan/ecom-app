@@ -244,11 +244,13 @@
 				A96C0B25B1A3782BA650209E /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
+				79414A8628FC09C10080D8A1 /* Copy Firebase App Id File */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				22005D878F5C6512AA40CA7A /* [CP] Embed Pods Frameworks */,
+				79414A8728FC0CCF0080D8A1 /* Firebase Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -341,6 +343,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+		};
+		79414A8628FC09C10080D8A1 /* Copy Firebase App Id File */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Firebase App Id File";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nFIREBASE_APP_ID_FILE=firebase_app_id_file.json\n\n# Get references to dev,qa,uat and prod versions of firebase_app_id_file.json\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nFIREBASE_APP_ID_FILE_DEV=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Dev/${FIREBASE_APP_ID_FILE}\nFIREBASE_APP_ID_FILE_QA=${PROJECT_DIR}/${TARGET_NAME}/Firebase/QA/${FIREBASE_APP_ID_FILE}\nFIREBASE_APP_ID_FILE_UAT=${PROJECT_DIR}/${TARGET_NAME}/Firebase/UAT/${FIREBASE_APP_ID_FILE}\nFIREBASE_APP_ID_FILE_PROD=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Prod/${FIREBASE_APP_ID_FILE}\n\n# Make sure the dev version of firebase_app_id_file.json exists\necho \"Looking for ${FIREBASE_APP_ID_FILE} in ${FIREBASE_APP_ID_FILE_DEV}\"\nif [ ! -f $FIREBASE_APP_ID_FILE_DEV ]\nthen\n    echo \"No dev firebase_app_id_file.json found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the qa version of firebase_app_id_file.json exists\necho \"Looking for ${FIREBASE_APP_ID_FILE} in ${FIREBASE_APP_ID_FILE_QA}\"\nif [ ! -f $FIREBASE_APP_ID_FILE_QA ]\nthen\n    echo \"No qa firebase_app_id_file.json found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the uat version of firebase_app_id_file.json exists\necho \"Looking for ${FIREBASE_APP_ID_FILE} in ${FIREBASE_APP_ID_FILE_UAT}\"\nif [ ! -f $FIREBASE_APP_ID_FILE_UAT ]\nthen\n    echo \"No uat firebase_app_id_file.json found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the prod version of firebase_app_id_file.json exists\necho \"Looking for ${FIREBASE_APP_ID_FILE} in ${FIREBASE_APP_ID_FILE_PROD}\"\nif [ ! -f $FIREBASE_APP_ID_FILE_PROD ]\nthen\n    echo \"No prod firebase_app_id_file.json found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for firebase_app_id_file.json\nFILE_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${FIREBASE_APP_ID_FILE} to final destination: ${FILE_DESTINATION}\"\n\n# Copy over the correct firebase_app_id_file.json for the current build configuration\nif [ \"${CONFIGURATION}\" == \"Debug-prod\" ] || [ \"${CONFIGURATION}\" == \"Release-prod\" ] || [ \"${CONFIGURATION}\" == \"Profile-prod\" ]\nthen\n    echo \"Using ${FIREBASE_APP_ID_FILE_PROD}\"\n    cp \"${FIREBASE_APP_ID_FILE_PROD}\" \"${FILE_DESTINATION}\"\n        \nelif [ \"${CONFIGURATION}\" == \"Debug-uat\" ] || [ \"${CONFIGURATION}\" == \"Release-uat\" ] || [ \"${CONFIGURATION}\" == \"Profile-uat\" ]\nthen\n    echo \"Using ${FIREBASE_APP_ID_FILE_UAT}\"\n    cp \"${FIREBASE_APP_ID_FILE_UAT}\" \"${FILE_DESTINATION}\"\n    \nelif [ \"${CONFIGURATION}\" == \"Debug-qa\" ]  || [ \"${CONFIGURATION}\" == \"Release-qa\" ] || [ \"${CONFIGURATION}\" == \"Profile-qa\" ]\nthen\n    echo \"Using ${FIREBASE_APP_ID_FILE_QA}\"\n    cp \"${FIREBASE_APP_ID_FILE_QA}\" \"${FILE_DESTINATION}\"\n    \nelif [ \"${CONFIGURATION}\" == \"Debug-dev\" ] || [ \"${CONFIGURATION}\" == \"Release-dev\" ] || [ \"${CONFIGURATION}\" == \"Profile-dev\" ]\nthen\n    echo \"Using ${FIREBASE_APP_ID_FILE_DEV}\"\n    cp \"${FIREBASE_APP_ID_FILE_DEV}\" \"${FILE_DESTINATION}\"\nelse\n    echo \"Error: invalid configuration specified: ${CONFIGURATION}\"\nfi\n\n";
+		};
+		79414A8728FC0CCF0080D8A1 /* Firebase Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Firebase Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if  [ \"${CONFIGURATION}\" == \"Debug-dev\" ] ||    \n    [ \"${CONFIGURATION}\" == \"Release-dev\" ] || \n    [ \"${CONFIGURATION}\" == \"Profile-dev\" ]; then\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase --validate -ai 1:296536640003:ios:3927b36843a71d1db25c36\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase -ai 1:296536640003:ios:3927b36843a71d1db25c36\necho \"Crashlytics set for dev\"\n\nelif  [ \"${CONFIGURATION}\" == \"Debug-qa\" ] ||    \n    [ \"${CONFIGURATION}\" == \"Release-qa\" ] || \n    [ \"${CONFIGURATION}\" == \"Profile-qa\" ]; then\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase --validate -ai 1:145803795125:ios:7172550170d0407a1bfcfc\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase -ai 1:145803795125:ios:7172550170d0407a1bfcfc\necho \"Crashlytics set for qa\"\n\nelif [ \"${CONFIGURATION}\" == \"Debug-uat\" ] ||     \n    [ \"${CONFIGURATION}\" == \"Profile-uat\" ] ||\n    [ \"${CONFIGURATION}\" == \"Release-uat\" ]; then\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase --validate -ai 1:459430567158:ios:399f81d946541e5638e0d7\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase -ai 1:459430567158:ios:399f81d946541e5638e0d7\necho \"Crashlytics set for uat\"\n\nelif [ \"${CONFIGURATION}\" == \"Debug-prod\" ] ||     \n    [ \"${CONFIGURATION}\" == \"Release-prod\" ] ||\n    [ \"${CONFIGURATION}\" == \"Profile-prod\" ]; then\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase --validate -ai 1:316125087690:ios:fa905992c2e9f3a7f2f133\n    $PODS_ROOT/FirebaseCrashlytics/upload-symbols --build-phase -ai 1:316125087690:ios:fa905992c2e9f3a7f2f133\necho \"Crashlytics set for prod\"\n\nfi\n\n";
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
