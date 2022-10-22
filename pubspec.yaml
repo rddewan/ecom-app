@@ -79,11 +79,15 @@ dependencies:
   # https://pub.dev/packages/go_router
   go_router: ^5.0.5
   # https://pub.dev/packages/firebase_core
-  firebase_core: ^1.24.0
+  firebase_core:  ^2.1.0
   # https://pub.dev/packages/firebase_crashlytics
-  firebase_crashlytics: ^2.9.0
+  firebase_crashlytics: ^3.0.2
   # https://pub.dev/packages/firebase_analytics
-  firebase_analytics: ^9.3.8
+  firebase_analytics: ^10.0.2
+  # https://pub.dev/packages/firebase_messaging
+  firebase_messaging: ^14.0.2
+  # https://pub.dev/packages/flutter_local_notifications
+  flutter_local_notifications: ^12.0.2
 
   
 

@@ -32,8 +32,29 @@ flutter pub run flutter_flavorizr
 
 
 ### Flutter Fire
-```flutterfire config \
+```
+flutterfire config \
   --project=flutter-ecomapp-dev-c7f8b \
   --out=lib/core/firebase/firebase_options_dev.dart \
   --ios-bundle-id=dev.rdewan.ecomApp.development \     
-  --android-app-id=dev.rdewan.ecomApp.development  ```
+  --android-package-name=dev.rdewan.ecomApp.development  
+
+  flutterfire config \
+  --project=flutter-ecomapp-qa-92e63 \  
+  --out=lib/core/firebase/firebase_options_qa.dart \  
+  --ios-bundle-id=dev.rdewan.ecomApp.qa \      
+  --android-package-name=dev.rdewan.ecomApp.qa 
+
+  flutterfire config \
+  --project=flutter-ecomapp-uat-e3721 \ 
+  --out=lib/core/firebase/firebase_options_uat.dart \ 
+  --ios-bundle-id=dev.rdewan.ecomApp.uat \     
+  --android-package-name=dev.rdewan.ecomApp.uat
+
+  flutterfire config \
+  --project=flutter-ecomapp-prod-34d00 \
+  --out=lib/core/firebase/firebase_options_prod.dart \
+  --ios-bundle-id=dev.rdewan.ecomApp \
+  --android-package-name=dev.rdewan.ecomApp
+  
+  ```
