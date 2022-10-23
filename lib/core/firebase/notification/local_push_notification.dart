@@ -38,6 +38,13 @@ class LocalPushNotification {
         requestSoundPermission: false,
       ),
     );
+
+    final isGranted = await _localNotificationsPlugin
+      .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestPermission();
+
+    _logger.info('is Android Notification Permission Granted: $isGranted');
+      
    
     await _localNotificationsPlugin
       .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
