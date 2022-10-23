@@ -35,7 +35,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
 
         isDuplicate = true;
 
-        return '/login';
+        return '/login?from=${state.subloc}';
         
       }
       else if (isLoggedIn && isGoingToLogin && !isDuplicate) {
@@ -65,7 +65,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: _rootNavigatorKey,
         path: '/login',
         name: loginRoute,
-        builder: (context, state) => LoginScreen(key: state.pageKey),
+        builder: (context, state)  {
+          final from = state.queryParams['from'];
+          return LoginScreen(key: state.pageKey, from: from);
+        },
         routes: [
 
           GoRoute(

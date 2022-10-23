@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:ecom_app/common/logging/logging_provider.dart';
 import 'package:ecom_app/core/firebase/analytics/analytics.dart';
 import 'package:ecom_app/core/firebase/crashlytics/crashlytics.dart';
+import 'package:ecom_app/core/firebase/dynamic_link/dynamic_link.dart';
 import 'package:ecom_app/core/firebase/firebase_options_provider.dart';
 import 'package:ecom_app/core/firebase/notification/firebase_push_notification.dart';
 import 'package:ecom_app/core/local/db/hive_db.dart';
@@ -58,6 +59,9 @@ void mainApp(Flavor flavor) async {
 
     // Security config
     container.read(securityConfigProvider);
+
+    // initialize the dynamic link
+    container.read(dynamicLinkProvider);
 
     
     runApp(

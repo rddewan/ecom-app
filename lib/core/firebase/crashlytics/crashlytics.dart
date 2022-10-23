@@ -32,5 +32,15 @@ class Crashlytics {
   Future<void> setUser(String user) async {
     await _crashlytics.setUserIdentifier(user);
   }
+
+  Future<void> nonFatalCrash({required dynamic exception, StackTrace? stack, String? reason})  async {
+    if (_crashlytics.isCrashlyticsCollectionEnabled) {
+      await _crashlytics.recordError(
+        exception, 
+        stack,
+        reason: reason ?? 'Non_fatal Error',
+      );
+    }
+  }
   
 }
