@@ -37,8 +37,8 @@ void mainApp(Flavor flavor) async {
     // Pass all uncaught errors from the framework to Crashlytics.
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
-    final notification = container.read(firebasePushNotificationProvider);
-
+    container.read(firebasePushNotificationProvider);
+    
     // Enables/disables automatic data collection by Crashlytics.
     container.read(crashlyticsProvider);
 

@@ -55,6 +55,7 @@
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7893D47FFAD0FFF24BD6753B /* Pods-Runner.profile-dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dev.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dev.xcconfig"; sourceTree = "<group>"; };
+		79721E4129044C6800F6340D /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		7983D6A0290424F000702384 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
 		7983D6A1290424F000702384 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7983D6A22904265200702384 /* firebase_app_id_file.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firebase_app_id_file.json; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				79721E4129044C6800F6340D /* Runner.entitlements */,
 				79E6620728FBD1AC0067FAF0 /* Firebase */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
@@ -245,6 +247,7 @@
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				79414A8628FC09C10080D8A1 /* Copy Firebase App Id File */,
+				791B7BE029045DEA002894E2 /* Copy Firebase GoogleService File */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
@@ -344,6 +347,24 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
+		791B7BE029045DEA002894E2 /* Copy Firebase GoogleService File */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Firebase GoogleService File";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nFIREBASE_GOOGLE_SERVICE_FILE=GoogleService-Info.plist\n\n# Get references to dev,qa,uat and prod versions of GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nFIREBASE_GOOGLE_SERVICE_FILE_DEV=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Dev/${FIREBASE_GOOGLE_SERVICE_FILE}\nFIREBASE_GOOGLE_SERVICE_FILE_QA=${PROJECT_DIR}/${TARGET_NAME}/Firebase/QA/${FIREBASE_GOOGLE_SERVICE_FILE}\nFIREBASE_GOOGLE_SERVICE_FILE_UAT=${PROJECT_DIR}/${TARGET_NAME}/Firebase/UAT/${FIREBASE_GOOGLE_SERVICE_FILE}\nFIREBASE_GOOGLE_SERVICE_FILE_PROD=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Prod/${FIREBASE_GOOGLE_SERVICE_FILE}\n\n# Make sure the dev version of FIREBASE_GOOGLE_SERVICE_FILE.json exists\necho \"Looking for ${FIREBASE_GOOGLE_SERVICE_FILE} in ${FIREBASE_GOOGLE_SERVICE_FILE_DEV}\"\nif [ ! -f $FIREBASE_GOOGLE_SERVICE_FILE_DEV ]\nthen\n    echo \"No dev GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the qa version of FIREBASE_GOOGLE_SERVICE_FILE.json exists\necho \"Looking for ${FIREBASE_GOOGLE_SERVICE_FILE} in ${FIREBASE_GOOGLE_SERVICE_FILE_QA}\"\nif [ ! -f $FIREBASE_GOOGLE_SERVICE_FILE_QA ]\nthen\n    echo \"No qa GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the uat version of FIREBASE_GOOGLE_SERVICE_FILE.json exists\necho \"Looking for ${FIREBASE_GOOGLE_SERVICE_FILE} in ${FIREBASE_GOOGLE_SERVICE_FILE_UAT}\"\nif [ ! -f $FIREBASE_GOOGLE_SERVICE_FILE_UAT ]\nthen\n    echo \"No uat GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Make sure the prod version of FIREBASE_GOOGLE_SERVICE_FILE.json exists\necho \"Looking for ${FIREBASE_GOOGLE_SERVICE_FILE} in ${FIREBASE_GOOGLE_SERVICE_FILE_PROD}\"\nif [ ! -f $FIREBASE_GOOGLE_SERVICE_FILE_PROD ]\nthen\n    echo \"No prod GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for FIREBASE_GOOGLE_SERVICE_FILE.json\nFILE_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${FIREBASE_GOOGLE_SERVICE_FILE} to final destination: ${FILE_DESTINATION}\"\n\n# Copy over the correct FIREBASE_GOOGLE_SERVICE_FILE.json for the current build configuration\nif [ \"${CONFIGURATION}\" == \"Debug-prod\" ] || [ \"${CONFIGURATION}\" == \"Release-prod\" ] || [ \"${CONFIGURATION}\" == \"Profile-prod\" ]\nthen\n    echo \"Using ${FIREBASE_GOOGLE_SERVICE_FILE_PROD}\"\n    cp \"${FIREBASE_GOOGLE_SERVICE_FILE_PROD}\" \"${FILE_DESTINATION}\"\n        \nelif [ \"${CONFIGURATION}\" == \"Debug-uat\" ] || [ \"${CONFIGURATION}\" == \"Release-uat\" ] || [ \"${CONFIGURATION}\" == \"Profile-uat\" ]\nthen\n    echo \"Using ${FIREBASE_GOOGLE_SERVICE_FILE_UAT}\"\n    cp \"${FIREBASE_GOOGLE_SERVICE_FILE_UAT}\" \"${FILE_DESTINATION}\"\n    \nelif [ \"${CONFIGURATION}\" == \"Debug-qa\" ]  || [ \"${CONFIGURATION}\" == \"Release-qa\" ] || [ \"${CONFIGURATION}\" == \"Profile-qa\" ]\nthen\n    echo \"Using ${FIREBASE_GOOGLE_SERVICE_FILE_QA}\"\n    cp \"${FIREBASE_GOOGLE_SERVICE_FILE_QA}\" \"${FILE_DESTINATION}\"\n    \nelif [ \"${CONFIGURATION}\" == \"Debug-dev\" ] || [ \"${CONFIGURATION}\" == \"Release-dev\" ] || [ \"${CONFIGURATION}\" == \"Profile-dev\" ]\nthen\n    echo \"Using ${FIREBASE_GOOGLE_SERVICE_FILE_DEV}\"\n    cp \"${FIREBASE_GOOGLE_SERVICE_FILE_DEV}\" \"${FILE_DESTINATION}\"\nelse\n    echo \"Error: invalid configuration specified: ${CONFIGURATION}\"\nfi\n\n";
+		};
 		79414A8628FC09C10080D8A1 /* Copy Firebase App Id File */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,7 +415,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		A96C0B25B1A3782BA650209E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -883,6 +904,7 @@
 			baseConfigurationReference = 0BA627FEB43A56D8A3FAC6A6 /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp Dev";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
@@ -897,6 +919,7 @@
 			baseConfigurationReference = 7893D47FFAD0FFF24BD6753B /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp Dev";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
@@ -911,6 +934,7 @@
 			baseConfigurationReference = 81D39F9E9C617EF76842CC73 /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp Dev";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
@@ -925,6 +949,7 @@
 			baseConfigurationReference = CFE329BC35667710655B8A94 /* Pods-Runner.debug-qa.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp QA";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
@@ -939,6 +964,7 @@
 			baseConfigurationReference = ABDB17F98997C13F91BC5A5E /* Pods-Runner.profile-qa.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp QA";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
@@ -951,6 +977,7 @@
 			baseConfigurationReference = 4149E8DB46DF4984623E5E66 /* Pods-Runner.release-qa.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp QA";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
@@ -963,6 +990,7 @@
 			baseConfigurationReference = 1A9FD0C4F2002C14E4118AB9 /* Pods-Runner.debug-uat.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp UAT";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
@@ -976,6 +1004,7 @@
 			baseConfigurationReference = 9BC639A2A34189993B9AC316 /* Pods-Runner.profile-uat.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp UAT";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
@@ -989,6 +1018,7 @@
 			baseConfigurationReference = 0DC0BEE57453858BA2ECA7A9 /* Pods-Runner.release-uat.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = "EcomApp UAT";
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
@@ -1002,6 +1032,7 @@
 			baseConfigurationReference = 59D0D968AFBC0A1124185DF8 /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = EcomApp;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
@@ -1015,6 +1046,7 @@
 			baseConfigurationReference = 5498713D14270D5845E01EE0 /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = EcomApp;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
@@ -1028,6 +1060,7 @@
 			baseConfigurationReference = B1A26F929C74CC3CFCBB82C8 /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
 				APP_DISPLAY_NAME = EcomApp;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;

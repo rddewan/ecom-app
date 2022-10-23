@@ -31,7 +31,12 @@ class LocalPushNotification {
 
     const initializationSettings = InitializationSettings(
       android: AndroidInitializationSettings('ic_stat_shopping_cart'),
-      iOS: DarwinInitializationSettings(),
+      iOS: DarwinInitializationSettings(
+        requestAlertPermission: false,
+        requestBadgePermission: false,
+        requestCriticalPermission: false,
+        requestSoundPermission: false,
+      ),
     );
    
     await _localNotificationsPlugin
@@ -55,7 +60,10 @@ class LocalPushNotification {
   ///Heads up notifications require a "max" importance level.
   void showNotification(ReceivedNotification message) async {
     //final String largeIcon = await _base64EncodedImage(message.imageUrl ?? '');
-    final String bigPicture = await _base64EncodedImage(message.imageUrl ?? '');
+    String? bigPicture;
+    if (message.imageUrl != null) {
+      bigPicture = await _base64EncodedImage(message.imageUrl ?? '');
+    }
 
     await _localNotificationsPlugin.show(
       message.id, 
@@ -63,8 +71,7 @@ class LocalPushNotification {
       message.body, 
       NotificationDetails(
         android: _androidNotificationDetail(
-          message.imageUrl != null ?
-          BigPictureStyleInformation(
+          bigPicture != null ? BigPictureStyleInformation(
             ByteArrayAndroidBitmap.fromBase64String(bigPicture),
           ) : null,
         ),

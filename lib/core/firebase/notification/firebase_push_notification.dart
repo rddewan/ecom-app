@@ -49,6 +49,18 @@ class FirebasePushNotification {
       debugPrint('User declined or has not accepted permission');
     }
 
+    ///Foreground notifications (also known as "heads up")
+    /// are those which display for a brief period of time above existing applications, 
+    /// and should be used for important events.
+    /// Android & iOS have different behaviors when handling notifications whilst applications
+    ///  are in the foreground so keep this in mind whilst developing.
+
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, // Required to display a heads up notification
+      badge: true,
+      sound: true,
+    );
+
     ///Handling messages whilst your application is in the background is a little different. 
     ///Messages can be handled via the onBackgroundMessage handler. 
     ///When received, an isolate is spawned (Android only, iOS/macOS does not require a separate isolate) 
@@ -100,6 +112,25 @@ class FirebasePushNotification {
     }
     
   }
+
+  /// Returns the default FCM token for this device.
+  Future<String?> getFirebaseToken() async {
+    return await _messaging.getToken();
+  }
+
+  
+  /// On iOS/MacOS, it is possible to get the users APNs token.
+  /// This may be required if you want to send messages to your iOS/MacOS devices without using the FCM service.
+  Future<String?> getAPNSToken() async {
+    return await _messaging.getAPNSToken();
+  }
+
+  /// Returns the current [NotificationSettings].
+  /// To request permissions, call [requestPermission].
+  Future<NotificationSettings> getNotificationSettings() async {
+    return await _messaging.getNotificationSettings();
+  }
+
 
 
   
