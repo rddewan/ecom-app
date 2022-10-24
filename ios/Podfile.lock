@@ -14,6 +14,9 @@ PODS:
   - Firebase/Crashlytics (10.0.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 10.0.0)
+  - Firebase/DynamicLinks (10.0.0):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 10.0.0)
   - Firebase/Messaging (10.0.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.0.0)
@@ -26,6 +29,10 @@ PODS:
     - Flutter
   - firebase_crashlytics (3.0.2):
     - Firebase/Crashlytics (= 10.0.0)
+    - firebase_core
+    - Flutter
+  - firebase_dynamic_links (5.0.2):
+    - Firebase/DynamicLinks (= 10.0.0)
     - firebase_core
     - Flutter
   - firebase_messaging (14.0.2):
@@ -63,6 +70,8 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (~> 2.1)
+  - FirebaseDynamicLinks (10.0.0):
+    - FirebaseCore (~> 10.0)
   - FirebaseInstallations (10.0.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
@@ -166,6 +175,7 @@ DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
+  - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
@@ -185,6 +195,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreInternal
     - FirebaseCrashlytics
+    - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseMessaging
     - GoogleAppMeasurement
@@ -205,6 +216,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_crashlytics:
     :path: ".symlinks/plugins/firebase_crashlytics/ios"
+  firebase_dynamic_links:
+    :path: ".symlinks/plugins/firebase_dynamic_links/ios"
   firebase_messaging:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
@@ -233,11 +246,13 @@ SPEC CHECKSUMS:
   firebase_analytics: 913637c11a0baf049802dd30ca56d9fa843e96c0
   firebase_core: 9f457751caed72a30d23be90eb72de6ccbd1f9b0
   firebase_crashlytics: d6e15661f63c775e99a9931fe087bdbcbab2ca36
+  firebase_dynamic_links: c7bd5910d4d13d24ae5ad0a72ea1cf2c984443e3
   firebase_messaging: 169ae56e5d64013d605b954b43e1b928a9170471
   FirebaseAnalytics: 9921a52739f4ab66099da31b6e0243db78a3ac0a
   FirebaseCore: 97f48a3a567a72b8d4daa0f03c3aadb78df4e995
   FirebaseCoreInternal: 5eb3960335da5ea30115d57d39db6988c4ad06f3
   FirebaseCrashlytics: 6b0613b548fe096221b5ba6d2f7a9732b451233b
+  FirebaseDynamicLinks: 37dcd9f082b9c5ea9eb5826e82aef58bbd6fd5c1
   FirebaseInstallations: 7f1c9ae6bd9df6abe9c74124b38fa8740aba5df4
   FirebaseMessaging: 8916bf5edb1dbfac74665a181e4d1ab3a78a08a2
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854

@@ -16,6 +16,7 @@ final securityConfigProvider = Provider<SecurityConfig>((ref) {
 });
 
 class SecurityConfig {
+  // ignore: unused_field
   final Ref _ref;
   final EnvReader _envReader;
 

@@ -1,6 +1,4 @@
 
-import 'dart:ui';
-
 import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/features/dashboard/presentation/controller/dashboard_controller.dart';
 import 'package:flutter/material.dart';
@@ -56,24 +54,7 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
     );
   }
 
-  static int _calculateSelectedIndex(BuildContext context) {
-    final GoRouter route = GoRouter.of(context);
-    final String location = route.location;
-    
-    if (location.startsWith('/')) {
-      return 0;
-    }
-    if (location.startsWith('/cart')) {
-      return 1;
-    }
-    if (location.startsWith('/setting')) {
-      return 2;
-    }
-
-    return 0;
-
-  }
-
+  
   void _onItemTapped(int index) {
     ref.read(dashboardControllerProvider.notifier).setPageIndex(index);
 

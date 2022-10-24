@@ -58,6 +58,7 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> {
     });
   }
 
+  // ignore: unused_element
   void _showSnackBar() {
     scaffoldMessengerKey.currentState?.clearSnackBars();
     scaffoldMessengerKey.currentState?.showSnackBar(

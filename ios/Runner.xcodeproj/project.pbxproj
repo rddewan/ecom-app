@@ -1137,8 +1137,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile UAT";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile UAT";
 			};
 			name = "Debug-uat";
 		};
@@ -1151,8 +1153,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile UAT";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile UAT";
 			};
 			name = "Profile-uat";
 		};
@@ -1165,8 +1169,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile UAT";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile UAT";
 			};
 			name = "Release-uat";
 		};
@@ -1179,8 +1185,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile";
 			};
 			name = "Debug-prod";
 		};
@@ -1193,8 +1201,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile";
 			};
 			name = "Profile-prod";
 		};
@@ -1207,8 +1217,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FCUZNYGQMQ;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = FCUZNYGQMQ;
 				PRODUCT_NAME = Runner;
 				PROVISIONING_PROFILE_SPECIFIER = "EcomApp ProvisioningProfile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "EcomApp ProvisioningProfile";
 			};
 			name = "Release-prod";
 		};
