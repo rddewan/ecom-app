@@ -6,6 +6,7 @@ import 'package:ecom_app/core/firebase/crashlytics/crashlytics.dart';
 import 'package:ecom_app/core/firebase/dynamic_link/dynamic_link.dart';
 import 'package:ecom_app/core/firebase/firebase_options_provider.dart';
 import 'package:ecom_app/core/firebase/notification/firebase_push_notification.dart';
+import 'package:ecom_app/core/firebase/performance/performance.dart';
 import 'package:ecom_app/core/local/db/hive_db.dart';
 import 'package:ecom_app/core/flavor/flavor.dart';
 import 'package:ecom_app/core/providers/flavor_provider.dart';
@@ -35,17 +36,25 @@ void mainApp(Flavor flavor) async {
       options: firebaseOptions,
     );
 
+    // setup the firebase performance
+    final performance = container.read(performanceProvider);
+    final trace = performance.getTrace('StartUp');
+    trace.start();
+     
     // Pass all uncaught errors from the framework to Crashlytics.
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
     container.read(firebasePushNotificationProvider);
+    trace.incrementMetric('PushNotification', 1);
     
     // Enables/disables automatic data collection by Crashlytics.
     container.read(crashlyticsProvider);
+    trace.incrementMetric('Crashlytics', 2);
 
     // Initialize firebase analytics 
     final analytics  = container.read(analyticsProvider);
     await analytics.logAppOpen();
+    trace.incrementMetric('Analytics', 3);
 
     // Setup Logger
     container.read(setupLoggingProvider);
@@ -62,6 +71,7 @@ void mainApp(Flavor flavor) async {
 
     // initialize the dynamic link
     container.read(dynamicLinkProvider);
+    trace.stop();
 
     
     runApp(

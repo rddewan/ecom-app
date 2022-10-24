@@ -90,7 +90,8 @@ dependencies:
   flutter_local_notifications: ^12.0.2
   # https://pub.dev/packages/firebase_dynamic_links
   firebase_dynamic_links: ^5.0.2
-  
+  # https://pub.dev/packages/firebase_performance
+  firebase_performance: ^0.9.0+2
 
   
 
