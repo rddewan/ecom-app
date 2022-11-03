@@ -1,0 +1,7 @@
+{
+    "title": "Bienvenido a la herramienta de hoja de traducción de Flutter",
+    "body": "Este es un cuerpo de muestra\nPara verificar el sistema de traducción\nEn Google Hheet\n",
+    "home.title": "Pantalla de inicio",
+    "home.subtitle": "Bienvenido a casa",
+    "home.counter": "Presionó el contador {count} veces"
+}
