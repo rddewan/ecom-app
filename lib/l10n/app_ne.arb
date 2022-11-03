@@ -1,0 +1,14 @@
+{
+    "@@last_modified": "2022-09-18T12:43:35.830162",
+    "@@locale": "ne",
+    "homeTitle": "फ्लोटर डेमो गृह पृष्ठ",
+    "buttonPushMsg": "तपाईंले बटन {0 0}} समय धकेलानुभयो:",
+    "@buttonPushMsg": {
+        "description": "Auto-generated for buttonPushMsg",
+        "placeholders": {
+            "0 0": {}
+        }
+    },
+    "increment": "वृद्धि",
+    "home": "घर"
+}

@@ -46,3 +46,9 @@ app.*.map.json
 .fvm/flutter_sdk
 
 *.env
+credentials.json
+
+**.g.dart
+**.freezed.dart 
+pubspec.lock
+Footer

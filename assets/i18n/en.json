@@ -1,0 +1,7 @@
+{
+    "title": "Welcome to Flutter Translation Sheet tool",
+    "body": "This is a sample body\nto check the translation system\nin GoogleSheet\n",
+    "home.title": "Home screen",
+    "home.subtitle": "Welcome Home",
+    "home.counter": "You pressed the counter {count} times"
+}
