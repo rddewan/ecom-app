@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "459430567158",
+    "project_id": "flutter-ecomapp-uat-e3721",
+    "storage_bucket": "flutter-ecomapp-uat-e3721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459430567158:android:7f825e01e4e3da1b38e0d7",
+        "android_client_info": {
+          "package_name": "dev.rdewan.ecomApp.uat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459430567158-s2vle7eapfh746l7dfvtj5l46r9fk9uv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj0PJ3VmIXHF0rPG0WfJDbvkJ1z3xsDiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459430567158-s2vle7eapfh746l7dfvtj5l46r9fk9uv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "459430567158-n2b5gokofdie3jl3i22jimt7s64cr1qm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.rdewan.ecomApp.uat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
