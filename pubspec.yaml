@@ -142,7 +142,7 @@ flavorizr:
         name: "EcomApp"
 
       android:
-        applicationId: "dev.rdewan.ecom_app"
+        applicationId: "dev.rdewan.ecomApp"
         generateDummyAssets: true
         icon: "assets/images/icons/shopping.png"
         customConfig:
@@ -159,7 +159,7 @@ flavorizr:
         name: "EcomApp"
 
       android:
-        applicationId: "dev.rdewan.ecom_app"
+        applicationId: "dev.rdewan.ecomApp"
         generateDummyAssets: true
         icon: "assets/images/icons/shopping.png"
         customConfig:
@@ -176,7 +176,7 @@ flavorizr:
         name: "EcomApp"
 
       android:
-        applicationId: "dev.rdewan.ecom_app"
+        applicationId: "dev.rdewan.ecomApp"
         generateDummyAssets: true
         icon: "assets/images/icons/shopping.png"
         customConfig:         

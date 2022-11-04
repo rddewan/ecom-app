@@ -109,7 +109,7 @@ android {
         }
         qa {
             dimension "flavor"
-            applicationId "dev.rdewan.ecom_app"
+            applicationId "dev.rdewan.ecomApp"
             applicationIdSuffix ".qa"
             versionNameSuffix "QA"
             signingConfig signingConfigs.qa
@@ -117,7 +117,7 @@ android {
         }
         uat {
             dimension "flavor"
-            applicationId "dev.rdewan.ecom_app"
+            applicationId "dev.rdewan.ecomApp"
             applicationIdSuffix ".uat"
             versionNameSuffix "UAT"
             signingConfig signingConfigs.uat
@@ -125,7 +125,7 @@ android {
         }
         prod {
             dimension "flavor"
-            applicationId "dev.rdewan.ecom_app"
+            applicationId "dev.rdewan.ecomApp"
             signingConfig signingConfigs.release
             resValue "string", "app_name", "EcomApp"
         }
