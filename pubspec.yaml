@@ -92,6 +92,8 @@ dependencies:
   firebase_dynamic_links: ^5.0.2
   # https://pub.dev/packages/firebase_performance
   firebase_performance: ^0.9.0+2
+  #https://pub.dev/packages/flex_color_scheme
+  flex_color_scheme: ^6.1.1
 
   
 

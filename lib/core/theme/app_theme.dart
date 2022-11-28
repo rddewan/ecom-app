@@ -1,5 +1,6 @@
 
 import 'package:ecom_app/core/theme/theme_const.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 mixin AppThemeMixin {
@@ -51,6 +52,62 @@ mixin AppThemeMixin {
       ),
     ),
   );
+
+  FlexSubThemesData flexSubThemesDataLight = const FlexSubThemesData(
+    blendOnLevel: 10,
+    blendOnColors: false,
+    bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+    bottomNavigationBarUnselectedLabelSchemeColor: SchemeColor.tertiary,
+    bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+    bottomNavigationBarUnselectedIconSchemeColor: SchemeColor.tertiary,
+    bottomNavigationBarBackgroundSchemeColor: SchemeColor.primaryContainer,
+    bottomNavigationBarElevation: 4.5,
+    navigationBarSelectedLabelSchemeColor: SchemeColor.onSecondary,
+    navigationBarUnselectedLabelSchemeColor: SchemeColor.surface,
+    navigationBarSelectedIconSchemeColor: SchemeColor.onSecondary,
+    navigationBarUnselectedIconSchemeColor: SchemeColor.surface,
+    navigationBarIndicatorOpacity: 0.25,
+    navigationBarBackgroundSchemeColor: SchemeColor.secondary,
+  );
+
+  FlexSubThemesData flexSubThemesDataDark = const FlexSubThemesData(
+    blendOnLevel: 20,
+    bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.primary,
+    bottomNavigationBarUnselectedLabelSchemeColor: SchemeColor.tertiary,
+    bottomNavigationBarSelectedIconSchemeColor: SchemeColor.primary,
+    bottomNavigationBarUnselectedIconSchemeColor: SchemeColor.tertiary,
+    bottomNavigationBarBackgroundSchemeColor: SchemeColor.primaryContainer,
+    bottomNavigationBarElevation: 4.5,
+    navigationBarSelectedLabelSchemeColor: SchemeColor.onSecondary,
+    navigationBarUnselectedLabelSchemeColor: SchemeColor.surface,
+    navigationBarSelectedIconSchemeColor: SchemeColor.onSecondary,
+    navigationBarUnselectedIconSchemeColor: SchemeColor.surface,
+    navigationBarIndicatorOpacity: 0.25,
+    navigationBarBackgroundSchemeColor: SchemeColor.secondary,
+  );
+
+
+  FlexSchemeData customFlexScheme = const FlexSchemeData(
+    name: 'Midnight blue',
+    description: 'Midnight blue theme, custom definition of all colors',
+    light: FlexSchemeColor(
+      primary: Color(0xFF00296B),
+      primaryContainer: Color(0xFFA0C2ED),
+      secondary: Color(0xFFD26900),
+      secondaryContainer: Color(0xFFFFD270),
+      tertiary: Color(0xFF5C5C95),
+      tertiaryContainer: Color(0xFFC8DBF8),
+    ),
+    dark: FlexSchemeColor(
+      primary: Color(0xFFB1CFF5),
+      primaryContainer: Color(0xFF3873BA),
+      secondary: Color(0xFFFFD270),
+      secondaryContainer: Color(0xFFD26900),
+      tertiary: Color(0xFFC9CBFC),
+      tertiaryContainer: Color(0xFF535393),
+    ),
+);
+
 
   ThemeMode currentTheme(String? theme) {
     switch (theme) {
