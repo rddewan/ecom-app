@@ -5,7 +5,7 @@ import 'package:ecom_app/features/auth/signup/data/dto/sign_up_response.dart';
 import 'package:ecom_app/features/auth/signup/data/repository/isign_up_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// provider for ISignUpRepository
+/// provider to provide the instance of SignUpRepository
 final signUpRepositoryProvider = Provider<ISignUpRepository>((ref) {
   final signUpApiService = ref.watch(signUpApiServiceProvider);
 
