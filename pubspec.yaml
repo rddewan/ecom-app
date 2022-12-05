@@ -101,6 +101,10 @@ dependencies:
   equatable: ^2.0.5
   # https://pub.dev/packages/multiple_result/
   multiple_result: ^2.0.0
+  # https://pub.dev/packages/mask_text_input_formatter/
+  mask_text_input_formatter: ^2.4.0
+
+  
 
   
 
