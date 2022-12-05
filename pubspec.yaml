@@ -43,7 +43,7 @@ dependencies:
   # https://pub.dev/packages/flutter_dotenv
   flutter_dotenv: ^5.0.2
   # https://pub.dev/packages/flutter_riverpod
-  flutter_riverpod: ^2.0.0-dev.9
+  flutter_riverpod: ^2.1.1
   # https://pub.dev/packages/logging
   logging: ^1.0.2
   # https://pub.dev/packages/flutter_translation_sheet
@@ -66,16 +66,13 @@ dependencies:
   # https://pub.dev/packages/hive
   hive_flutter: ^1.1.0
   # https://pub.dev/packages/envied
-  envied: ^0.2.3
+  envied: ^0.3.0
   # https://pub.dev/packages/local_auth
   local_auth: ^2.1.2
   # https://pub.dev/packages/freerasp
   freerasp: ^3.0.2
   # https://pub.dev/packages/flutter_screen_lock
-  flutter_screen_lock: ^7.0.4
-  # https://pub.dev/packages/freezed
-  freezed: 
-  freezed_annotation: ^2.1.0
+  flutter_screen_lock: ^7.0.4  
   # https://pub.dev/packages/go_router
   go_router: ^5.0.5
   # https://pub.dev/packages/firebase_core
@@ -94,6 +91,16 @@ dependencies:
   firebase_performance: ^0.9.0+2
   #https://pub.dev/packages/flex_color_scheme
   flex_color_scheme: ^6.1.1
+  # https://pub.dev/packages/retrofit/
+  retrofit: ^3.3.1
+  # https://pub.dev/packages/freezed_annotation
+  freezed_annotation: ^2.2.0
+  # https://pub.dev/packages/json_annotation
+  json_annotation: ^4.7.0
+  # https://pub.dev/packages/equatable/
+  equatable: ^2.0.5
+  # https://pub.dev/packages/multiple_result/
+  multiple_result: ^2.0.0
 
   
 
@@ -106,11 +113,14 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  hive_generator: ^1.1.3
+  flutter_lints: ^2.0.1
+  hive_generator: ^2.0.0
   hive_test: ^1.0.1
-  build_runner: ^2.2.1
-  envied_generator: ^0.2.3
+  build_runner: ^2.3.2
+  envied_generator: ^0.3.0
+  retrofit_generator: '>=4.0.0 <5.0.0'
+  json_serializable: '^6.5.4'
+  freezed: ^2.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
