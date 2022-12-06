@@ -4,7 +4,7 @@ import 'package:ecom_app/common/error/no_route_screen.dart';
 import 'package:ecom_app/core/route/notifier/go_router_notifier.dart';
 import 'package:ecom_app/core/route/route_name.dart';
 import 'package:ecom_app/features/auth/login/presentation/ui/login_screen.dart';
-import 'package:ecom_app/features/auth/login/presentation/ui/signup_screen.dart';
+import 'package:ecom_app/features/auth/signup/presentation/ui/signup_screen.dart';
 import 'package:ecom_app/features/cart/presentation/ui/cart_screen.dart';
 import 'package:ecom_app/features/dashboard/presentation/ui/dashboard_screen.dart';
 import 'package:ecom_app/features/home/presentation/ui/home_screen.dart';
@@ -30,20 +30,25 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       final isLoggedIn = notifier.isLoggedIn;
       final isGoingToLogin = state.subloc == '/login';
       final isGoingToNoInternet = state.location == '/noInternet';
-      
-      if (!isLoggedIn && !isGoingToLogin && !isDuplicate && !isGoingToNoInternet) {
+      final isGoingToSignUp = state.location == '/login/signUp';
 
-        isDuplicate = true;
+      if(!isDuplicate) {
+        if(isLoggedIn) {
+          if(isGoingToLogin || isGoingToSignUp) {
+            isDuplicate = true;
+            return '/';
+          }
+          
+        }
+        else {
+          if(!isGoingToLogin && !isGoingToSignUp && !isGoingToNoInternet) {
+            isDuplicate = true;
+            return '/login?from=${state.subloc}';
+          }
 
-        return '/login?from=${state.subloc}';
-        
-      }
-      else if (isLoggedIn && isGoingToLogin && !isDuplicate) {
-        isDuplicate = true;
-
-        return '/';
-
-      }
+        }
+      }     
+     
 
       if (isDuplicate) {
         isDuplicate = false;

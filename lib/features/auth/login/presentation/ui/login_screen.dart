@@ -28,6 +28,7 @@ class _LoginScreenState extends BaseConsumerState<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children:  [
             const Text('Login Screen'),
+
             ElevatedButton.icon(
               onPressed: () {
                 final location = widget.from;                
@@ -38,6 +39,20 @@ class _LoginScreenState extends BaseConsumerState<LoginScreen> {
               icon: const Icon(Icons.login), 
               label: const Text('Login'),
             ),
+
+            const SizedBox(height: 16,),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don't have an account?"),
+                const SizedBox(width: 8,),
+                GestureDetector(
+                  onTap: () => GoRouter.of(context).push('/login/signUp'),
+                  child: const Text("Register Now!"),
+                ),
+              ],
+            )
           ],
         ),
       ),
