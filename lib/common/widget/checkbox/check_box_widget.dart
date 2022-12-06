@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CheckboxWidget extends ConsumerStatefulWidget {
+
+class CheckboxWidget extends StatefulWidget {
   final String title;
   final String subtitle;
   final bool? value;
@@ -19,10 +19,10 @@ class CheckboxWidget extends ConsumerStatefulWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<CheckboxWidget> createState() => _CheckboxWidgetState();
+  State<CheckboxWidget> createState() => _CheckboxWidgetState();
 }
 
-class _CheckboxWidgetState extends ConsumerState<CheckboxWidget> {
+class _CheckboxWidgetState extends State<CheckboxWidget> {
   
   @override
   Widget build(BuildContext context) {
