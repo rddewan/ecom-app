@@ -29,7 +29,7 @@ class LoginController extends _$LoginController {
   }
 
   void setIsObscure() {
-    state = state.copyWith(isLoading: !state.isLoading);
+    state = state.copyWith(isObscure: !state.isObscure);
   }
 
   void setFormData({required String key, required dynamic value}) {
