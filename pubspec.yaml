@@ -103,6 +103,9 @@ dependencies:
   multiple_result: ^2.0.0
   # https://pub.dev/packages/mask_text_input_formatter/
   mask_text_input_formatter: ^2.4.0
+  # https://pub.dev/packages/riverpod_annotation/
+  riverpod_annotation: ^1.0.6
+  
 
   
 
@@ -125,6 +128,7 @@ dev_dependencies:
   retrofit_generator: '>=4.0.0 <5.0.0'
   json_serializable: '^6.5.4'
   freezed: ^2.3.0
+  riverpod_generator: ^1.0.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
