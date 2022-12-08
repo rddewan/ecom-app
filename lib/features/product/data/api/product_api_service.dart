@@ -9,7 +9,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'product_api_service.g.dart';
 
 /// Provide the instance on ProductApiService(dio)
-final productApiServiceProvider = Provider<ProductApiService>((ref) {
+final productApiServiceProvider = Provider.autoDispose<ProductApiService>((ref) {
   final dio = ref.watch(networkServiceProvider);
 
   return ProductApiService(dio);
