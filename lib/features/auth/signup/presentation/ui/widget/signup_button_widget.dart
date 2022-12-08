@@ -13,7 +13,7 @@ class SignUpButtonWidget extends ConsumerWidget {
     final isLoading = ref.watch(signUpControllerProvider.select((value) => value.isLoading));
     return PrimaryButton(
       text: 'SignUp',
-      isEnabled: true,
+      isEnabled: isLoading ? false : true,
       isLoading: isLoading,
       onPressed: onPressed,
     );

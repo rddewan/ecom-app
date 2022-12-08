@@ -13,8 +13,8 @@ class LoginButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isLoading = ref.watch(loginControllerProvider.select((value) => value.isLoading));
     return PrimaryButton(
-      text: 'Login'.hardcoded,
-      isEnabled: true,
+      text: 'LogIn'.hardcoded,
+      isEnabled: isLoading ? false : true,
       isLoading: isLoading,
       onPressed: onPressed,
     );
