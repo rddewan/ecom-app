@@ -28,6 +28,11 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
           label: 'Home',
         ),
         BottomNavigationBarItem(
+          activeIcon: Icon(Icons.shop),
+          icon: Icon(Icons.shop_rounded),
+          label: 'Product',
+        ),
+        BottomNavigationBarItem(
           activeIcon: Icon(Icons.shopify),
           icon: Icon(Icons.shopping_bag),
           label: 'Cart',
@@ -51,9 +56,12 @@ class _BottomNavigationWidgetState extends BaseConsumerState<BottomNavigationWid
         GoRouter.of(context).go('/');
         break;
       case 1:
-        GoRouter.of(context).go('/cart');
+        GoRouter.of(context).go('/product');
         break;
       case 2:
+        GoRouter.of(context).go('/cart');
+        break;
+      case 3:
         GoRouter.of(context).go('/setting');
         break;
       default:

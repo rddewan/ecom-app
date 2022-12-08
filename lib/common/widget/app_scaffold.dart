@@ -25,11 +25,8 @@ class AppScaffold extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: controller,
-          child: widget,
-        ),
-      ),
+        child: widget,
+        ),      
     );
   }
 }
