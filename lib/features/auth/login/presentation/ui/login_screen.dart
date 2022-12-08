@@ -4,9 +4,9 @@ import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/common/extensions/string_hardcoded.dart';
 import 'package:ecom_app/common/mixin/input_validation_mixin.dart';
 import 'package:ecom_app/common/widget/app_scaffold.dart';
-import 'package:ecom_app/common/widget/button/primary_button.dart';
 import 'package:ecom_app/common/widget/form/custom_text_form_field.dart';
 import 'package:ecom_app/features/auth/login/presentation/controller/login_controller.dart';
+import 'package:ecom_app/features/auth/login/presentation/ui/widget/login_button_widget.dart';
 import 'package:ecom_app/features/auth/login/presentation/ui/widget/login_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -94,14 +94,7 @@ class _LoginScreenState extends BaseConsumerState<LoginScreen> with InputValidat
 
               const SizedBox(height: 16,),
 
-              PrimaryButton(
-                text: 'Login',
-                isEnabled: true,
-                isLoading: false,
-                onPressed: () {
-                  _login();                 
-                },
-              ),
+              LoginButtonWidget(onPressed: _login),
 
               const SizedBox(height: 16,),
 
