@@ -20,6 +20,7 @@ class ProductState with _$ProductState {
     int total,
     @Default([])
     List<Product> products,
+    String? errorMsg,
 
   }) = _ProductState;
 }

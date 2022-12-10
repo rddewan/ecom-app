@@ -1,5 +1,6 @@
 
 
+import 'package:ecom_app/core/exception/mixin/dio_exception_mixin.dart';
 import 'package:ecom_app/features/auth/signup/data/api/sign_up_api_service.dart';
 import 'package:ecom_app/features/auth/signup/data/dto/sign_up_response.dart';
 import 'package:ecom_app/features/auth/signup/data/repository/isign_up_repository.dart';
@@ -13,7 +14,7 @@ final signUpRepositoryProvider = Provider<ISignUpRepository>((ref) {
 
 });
 
-class SignUpRepository implements ISignUpRepository {
+class SignUpRepository with DioExceptionMixin implements ISignUpRepository {
   final SignUpApiService _signUpApiService;
 
   SignUpRepository(this._signUpApiService); 
@@ -21,7 +22,7 @@ class SignUpRepository implements ISignUpRepository {
 
   @override
   Future<SignUpResponse> signUp(Map<String, dynamic> request) async {
-    return await _signUpApiService.signUp(request);
+    return callApi<SignUpResponse>(() => _signUpApiService.signUp(request));
     
   }
   

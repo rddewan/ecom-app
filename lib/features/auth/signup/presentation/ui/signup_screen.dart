@@ -4,11 +4,12 @@ import 'package:ecom_app/base/base_consumer_state.dart';
 import 'package:ecom_app/common/extensions/string_hardcoded.dart';
 import 'package:ecom_app/common/mixin/input_phone_formatter_mixin.dart';
 import 'package:ecom_app/common/mixin/input_validation_mixin.dart';
-import 'package:ecom_app/common/widget/app_scaffold.dart';
+import 'package:ecom_app/common/widget/app_scaffold_scrollable.dart';
 import 'package:ecom_app/common/widget/dialog/confirm_dialog.dart';
 import 'package:ecom_app/common/widget/form/custom_text_form_field.dart';
 import 'package:ecom_app/core/route/go_router_provider.dart';
 import 'package:ecom_app/features/auth/signup/presentation/controller/sign_up_controller.dart';
+import 'package:ecom_app/features/auth/signup/presentation/ui/widget/sign_up_error_widget.dart';
 import 'package:ecom_app/features/auth/signup/presentation/ui/widget/signup_button_widget.dart';
 import 'package:ecom_app/features/auth/signup/presentation/ui/widget/signup_password_widget.dart';
 import 'package:ecom_app/features/auth/signup/presentation/ui/widget/terms_conditions_checkbox_widget.dart';
@@ -47,7 +48,7 @@ class _SignUpScreenState extends BaseConsumerState<SignUpScreen>
   Widget build(BuildContext context) {
     listenSignUpStateChange();
 
-    return AppScaffold(
+    return AppScaffoldScrollable(
       title: const Text("SignUp"), 
       widget: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -55,6 +56,10 @@ class _SignUpScreenState extends BaseConsumerState<SignUpScreen>
           key: _formKey,
           child: Column(
             children: [
+              const SizedBox(height: 16,),
+
+              const SignUpErrorWidget(),
+
               const SizedBox(height: 16,),
 
               CustomTextFormField(

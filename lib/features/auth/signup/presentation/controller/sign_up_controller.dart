@@ -14,14 +14,26 @@ class SignUpController extends Notifier<SignUpState> {
   void signUp() async {
     final signUpService = ref.read(signUpServiceProvider);
 
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorMsg: null);
     final result = await signUpService.signUp(state.formData);
-    if(result.id > 0) {
-      state = state.copyWith(
-        isLoading: false,
-        isSignUp: const AsyncValue.data(true),
-      );
-    }
+
+    result.when(
+      (success) {
+        state = state.copyWith(
+          isLoading: false,
+          isSignUp: const AsyncValue.data(true),
+        );
+
+      }, 
+      (error) {
+        state = state.copyWith(
+          isLoading: false,
+          errorMsg: error.message,
+        );
+
+      },
+    );
+
   }
 
   void setTermsAndCondition(bool value) {

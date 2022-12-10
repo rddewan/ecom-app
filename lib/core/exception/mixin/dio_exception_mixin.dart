@@ -35,6 +35,16 @@ mixin DioExceptionMixin {
 
       }
 
+      if (e.response?.statusCode == 422) {
+        throw Failure(
+          message: e.response?.data['message'].toString() ?? '',
+          statusCode: e.response?.statusCode,
+          exception: e,
+          stackTrace: s,
+        );
+
+      }
+
       throw Failure(
         message: e.response?.statusMessage ?? 'Something went wrong, PLease try later'.hardcoded,
         statusCode: e.response?.statusCode,

@@ -1,10 +1,12 @@
 
 
+import 'package:ecom_app/core/exception/failure.dart';
 import 'package:ecom_app/features/auth/signup/application/isign_up_service.dart';
 import 'package:ecom_app/features/auth/signup/data/dto/sign_up_response.dart';
 import 'package:ecom_app/features/auth/signup/data/repository/isign_up_repository.dart';
 import 'package:ecom_app/features/auth/signup/data/repository/sign_up_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:multiple_result/multiple_result.dart';
 
 
 /// provider to provide the instance of SignUpService
@@ -22,9 +24,17 @@ class SignUpService implements ISignUpService {
   
 
   @override
-  Future<SignUpResponse> signUp(Map<String, dynamic> request) async {
+  Future<Result<SignUpResponse,Failure>> signUp(Map<String, dynamic> request) async {
 
-    return await _signUpRepository.signUp(request);
+    try {
+
+      final response = await _signUpRepository.signUp(request);
+      return Success(response);
+      
+    } on Failure catch (e) {
+      return Error(e);    
+    }
+    
     
   }
   

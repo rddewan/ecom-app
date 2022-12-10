@@ -4,6 +4,7 @@ import 'package:ecom_app/common/extensions/string_hardcoded.dart';
 import 'package:ecom_app/common/styles/dimens.dart';
 import 'package:ecom_app/common/widget/app_scaffold.dart';
 import 'package:ecom_app/features/product/presentation/controller/product_controller.dart';
+import 'package:ecom_app/features/product/presentation/ui/widget/product_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -61,6 +62,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
       title: Text('Product'.hardcoded), 
       widget: Stack(
         children: [
+          const ProductErrorWidget(),
 
           AlignedGridView.count(
             itemCount: state.products.length,

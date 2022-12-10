@@ -1,5 +1,6 @@
 
 
+import 'package:ecom_app/core/exception/mixin/dio_exception_mixin.dart';
 import 'package:ecom_app/features/product/data/api/product_api_service.dart';
 import 'package:ecom_app/features/product/data/dto/response/product_response.dart';
 import 'package:ecom_app/features/product/data/repository/iproduct_repository.dart';
@@ -14,7 +15,7 @@ ProductRepository productRepository(ProductRepositoryRef ref) {
   return ProductRepository(productApiService);
 }
 
-class ProductRepository implements IProductRepository {
+class ProductRepository with DioExceptionMixin implements IProductRepository {
   final ProductApiService _productApiService;
 
   ProductRepository(this._productApiService);
@@ -22,7 +23,7 @@ class ProductRepository implements IProductRepository {
 
   @override
   Future<ProductResponse> getProducts(Map<String, dynamic> query) async{
-    return await _productApiService.getProducts(query);
+    return callApi<ProductResponse>(() => _productApiService.getProducts(query));
     
   }
   

@@ -29,15 +29,29 @@ class ProductController extends StateNotifier<ProductState> {
     final oldProduct = state.products;
 
     final result = await _productService.getProducts(query);
-    state = state.copyWith(
-      isFetching: false,
-      isLoading: false,
-      products: [...oldProduct, ...result.products],
-      currentPage: result.page.currentPage,
-      totalPage: result.page.lastPage,
-      total: result.page.total,
-    );
 
+    result.when(
+      (success) {
+        state = state.copyWith(
+          isFetching: false,
+          isLoading: false,
+          products: [...oldProduct, ...success.products],
+          currentPage: success.page.currentPage,
+          totalPage: success.page.lastPage,
+          total: success.page.total,
+        );
+
+      }, 
+      (error) {
+        state = state.copyWith(
+          isFetching: false,
+          isLoading: false,
+          errorMsg: error.message,          
+        );
+
+      },
+    );
+    
   }
   
 }

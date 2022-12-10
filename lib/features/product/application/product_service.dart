@@ -1,6 +1,7 @@
 
 
 import 'package:ecom_app/core/env/env_reader.dart';
+import 'package:ecom_app/core/exception/failure.dart';
 import 'package:ecom_app/features/product/application/iproduct_service.dart';
 import 'package:ecom_app/features/product/data/dto/response/product_response.dart';
 import 'package:ecom_app/features/product/data/repository/iproduct_repository.dart';
@@ -9,6 +10,7 @@ import 'package:ecom_app/features/product/domain/mappers/product_model_mapper.da
 import 'package:ecom_app/features/product/domain/models/page.dart';
 import 'package:ecom_app/features/product/domain/models/product.dart';
 import 'package:ecom_app/features/product/domain/models/product_model.dart';
+import 'package:multiple_result/multiple_result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 final productServiceProvider = Provider.autoDispose<IProductService>((ref) {
@@ -25,12 +27,19 @@ class ProductService implements IProductService, ProductModelMapper {
   ProductService(this._productRepository, this._baseUrl);
 
   @override
-  Future<ProductModel> getProducts(Map<String, dynamic> query) async {
+  Future<Result<ProductModel,Failure>> getProducts(Map<String, dynamic> query) async {
     
-    final response = await _productRepository.getProducts(query);
-    final result = mapToProductModel(response);
+    try {
 
-    return result;
+      final response = await _productRepository.getProducts(query);
+      final result = mapToProductModel(response);
+
+      return Success(result);
+      
+    } on Failure catch (e) {
+      return Error(e);      
+    }
+    
     
   }
 

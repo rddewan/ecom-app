@@ -18,6 +18,7 @@ class SignUpState with _$SignUpState {
     final bool isTermsAndCondition,
     @Default({})
     final Map<String,dynamic> formData,
+    final String? errorMsg,
 
   }) = _SignUpState;
 }
