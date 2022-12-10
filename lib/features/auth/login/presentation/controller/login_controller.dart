@@ -1,4 +1,5 @@
 
+import 'package:ecom_app/core/local/db/hive_box_key.dart';
 import 'package:ecom_app/core/route/notifier/go_router_notifier.dart';
 import 'package:ecom_app/features/auth/login/application/login_service.dart';
 import 'package:ecom_app/features/auth/login/presentation/state/login_state.dart';
@@ -27,7 +28,8 @@ class LoginController extends _$LoginController {
           isLoading: false,
           isLoggedIn: const AsyncValue.data(true),
         );
-        ref.read(goRouterNotifierProvider).isLoggedIn = true;
+        // update the state on isLoggedIn
+        ref.read(goRouterNotifierProvider).isLoggedIn = success;
 
       }, 
       (error) {
@@ -51,5 +53,21 @@ class LoginController extends _$LoginController {
 
   void setFormData({required String key, required dynamic value}) {
     state = state.copyWith(formData: {...state.formData, ...{key:value}});
+  }
+
+  void getAccessToken() async {
+    final loginService = ref.read(loginServiceProvider);
+
+    final result = await loginService.getFromBox<String?>(accessTokenKey);
+
+    result.when(
+      (success) {
+        // update the state on isLoggedIn
+        ref.read(goRouterNotifierProvider).isLoggedIn = success == null ? false : true;
+      }, 
+      (error) {
+        state = state.copyWith(errorMsg: error.message);
+      },
+    );
   }
 }

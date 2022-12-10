@@ -11,6 +11,7 @@ import 'package:ecom_app/core/remote/network_service.dart';
 import 'package:ecom_app/core/route/go_router_provider.dart';
 import 'package:ecom_app/core/theme/app_theme.dart';
 import 'package:ecom_app/core/theme/theme_const.dart';
+import 'package:ecom_app/features/auth/login/presentation/controller/login_controller.dart';
 import 'package:ecom_app/i18n/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -34,6 +35,10 @@ class _MainWidgetState extends BaseConsumerState<MainWidget> with  AppThemeMixin
   @override
   void initState() {   
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(loginControllerProvider.notifier).getAccessToken();  
+    });
+
     _setCrashlyticsUser();
     _isNetworkConnected();
     _networkConnectionObserver();
