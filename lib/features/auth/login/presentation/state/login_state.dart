@@ -16,6 +16,9 @@ class LoginState with _$LoginState {
     final bool isObscure,
     @Default({})
     final Map<String, dynamic> formData,
+    @Default(AsyncValue.data(''))
+    final AsyncValue<String> errorData,
+    final String? errorMsg,
 
   }) = _LoginState;
 

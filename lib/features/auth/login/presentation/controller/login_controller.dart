@@ -16,16 +16,33 @@ class LoginController extends _$LoginController {
 
   void login() async {
     final loginService = ref.read(loginServiceProvider);
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, errorData: const AsyncValue.data(''), errorMsg: null);
 
     final result = await loginService.login(state.formData);
-    if(result.userId > 0) {
-      state = state.copyWith(
-        isLoading: false,
-        isLoggedIn: const AsyncValue.data(true),
-      );
-      ref.read(goRouterNotifierProvider).isLoggedIn = true;
-    }
+
+    result.when(
+      (success) {
+
+        state = state.copyWith(
+          isLoading: false,
+          isLoggedIn: const AsyncValue.data(true),
+        );
+        ref.read(goRouterNotifierProvider).isLoggedIn = true;
+
+      }, 
+      (error) {
+        state = state.copyWith(
+          isLoading: false,
+          errorData: AsyncValue.error(
+            error, 
+            error.stackTrace ?? StackTrace.fromString('stackTraceString'),
+          ),
+          errorMsg: error.message,
+        );
+
+      },
+    );
+    
   }
 
   void setIsObscure() {

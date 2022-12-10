@@ -1,10 +1,12 @@
 
 
+import 'package:ecom_app/core/exception/failure.dart';
 import 'package:ecom_app/features/auth/login/application/ilogin_service.dart';
 import 'package:ecom_app/features/auth/login/data/dto/response/login_response.dart';
 import 'package:ecom_app/features/auth/login/data/repository/ilogin_repository.dart';
 import 'package:ecom_app/features/auth/login/data/repository/login_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:multiple_result/multiple_result.dart';
 
 final loginServiceProvider = Provider.autoDispose<ILoginService>((ref) {
   final loginRepository = ref.watch(loginRepositoryProvider);
@@ -19,9 +21,18 @@ class LoginService implements ILoginService {
  
 
   @override
-  Future<LoginResponse> login(Map<String, dynamic> request) async {
-    final response = await _loginRepository.login(request);
-    return response;    
+  Future<Result<LoginResponse,Failure>> login(Map<String, dynamic> request) async {
+
+    try {
+
+      final response = await _loginRepository.login(request);
+      return Success(response);    
+      
+    } on Failure catch (e) {
+      return Error(e);    
+    }
+
+    
   }
   
 }

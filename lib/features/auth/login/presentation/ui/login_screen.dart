@@ -7,6 +7,7 @@ import 'package:ecom_app/common/widget/app_scaffold.dart';
 import 'package:ecom_app/common/widget/form/custom_text_form_field.dart';
 import 'package:ecom_app/features/auth/login/presentation/controller/login_controller.dart';
 import 'package:ecom_app/features/auth/login/presentation/ui/widget/login_button_widget.dart';
+import 'package:ecom_app/features/auth/login/presentation/ui/widget/login_error_widget.dart';
 import 'package:ecom_app/features/auth/login/presentation/ui/widget/login_password_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -43,6 +44,10 @@ class _LoginScreenState extends BaseConsumerState<LoginScreen> with InputValidat
           key: _formKey,
           child: Column(
             children: [
+              const SizedBox(height: 16,),
+
+              const LoginErrorWidget(),
+
               const SizedBox(height: 16,),
 
               CustomTextFormField(

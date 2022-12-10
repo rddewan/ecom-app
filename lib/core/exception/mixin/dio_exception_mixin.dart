@@ -27,7 +27,7 @@ mixin DioExceptionMixin {
 
       if (e.response?.statusCode == 401) {
         throw Failure(
-          message: '401 Something went wrong, PLease try later'.hardcoded,
+          message: e.response?.data['error'].toString() ?? '',
           statusCode: e.response?.statusCode,
           exception: e,
           stackTrace: s,
