@@ -32,9 +32,12 @@ class LoginService implements ILoginService {
 
       final response = await _loginRepository.login(request);
 
-      final result = await  addToBox<String>(accessTokenKey, response.accessToken);
+      /// add access token to hive db
+      await  addToBox<String>(accessTokenKey, response.accessToken);
+      /// add userId to hive db
+      final userIdResult = await  addToBox<int>(userIdKey, response.userId);
 
-      return Success(result);    
+      return Success(userIdResult);    
       
     } on Failure catch (e) {
       return Error(e);    

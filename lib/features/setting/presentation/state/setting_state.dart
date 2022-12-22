@@ -9,6 +9,8 @@ class SettingState with _$SettingState {
 
   const factory SettingState({    
     String? passCode,
+    String? accessToken,
+    int? userId,
 
   }) = _SettingState;
 
